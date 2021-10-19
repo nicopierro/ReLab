@@ -1,0 +1,6 @@
+<h1>Angular Google Maps Demo</h1>
+<google-map  #mapRef [center]="center" [zoom]="zoom" [width]="1000">  
+    <map-marker *ngFor="let markerOption of markerList" [options] = "markerOption">
+    </map-marker>
+</google-map>
+
