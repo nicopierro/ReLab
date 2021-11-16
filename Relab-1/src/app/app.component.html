@@ -1,0 +1,69 @@
+{{title}}
+<!--Centriamo la mappa sulla scuola -->
+<google-map [center]="center">
+
+  <!--marker casa-->
+  <map-marker [position]="position" [label]="label">
+  </map-marker>
+
+  <!--marker scuola-->
+  <map-marker [position]="position2" [label]="label2" [options]="markerOptions">
+  </map-marker>
+
+  <!--marker cane-->
+  <map-marker [position]="position3" [options]="markerOptions2">
+  </map-marker>
+
+  <!--marker uccello-->
+  <map-marker [position]="position4" [options]="markerOptions3">
+  </map-marker>
+
+  <!--marker criceto-->
+  <map-marker [position]="position5" [options]="markerOptions4">
+  </map-marker>
+
+  <map-circle [center]="position2" [radius]="50" [options]='circleOptions'>
+  </map-circle>
+
+  <map-circle [center]="position" [radius]="50" [options]='circleOptions'>
+  </map-circle>
+
+  <!--triangolo-->
+  <map-polygon [paths]="vertices">
+  </map-polygon>
+
+  <!--rettangolo-->
+  <map-polygon [paths]="vertices2" [options]='rectangleOptions'>
+  </map-polygon>
+
+
+
+</google-map>
+
+<!--bottoni colore cerchio-->
+<h3>Cerchio</h3>
+<button (click)='redCircle()'>
+  Rosso
+</button>
+
+<button (click)='yellowCircle()'>
+  Giallo
+</button>
+
+<button (click)='greenCircle()'>
+  Verde
+</button>
+
+<!--bottoni colore cerchio-->
+<h3>Rettangolo</h3>
+<button (click)='redRectangle()'>
+  Rosso
+</button>
+
+<button (click)='yellowRectangle()'>
+  Giallo
+</button>
+
+<button (click)='greenRectangle()'>
+  Verde
+</button>
