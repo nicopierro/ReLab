@@ -8,7 +8,7 @@ import { GEOJSON, GeoFeatureCollection } from './models/geojson.model';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   title = 'server mappe';
   //Aggiungiamo latitudine e longitudine di un luogo
   center: google.maps.LatLngLiteral = { lat: 45.506738, lng: 9.190766 };
@@ -26,22 +26,20 @@ export class AppComponent {
     this.markerGenerator();
   }
 
+  styleFunc = (feature: any) =>{
+    console.log(feature)
+    return ({
+      clickable: false,
+      fillColor: this.fillColor,
+      strokeWeight: 1
+    });
+  }
+
+
   @ViewChild('mapRef') mapRef: GoogleMap;
   ngAfterViewInit() {
     this.mapRef.data.addGeoJson(this.geoJsonObject);
     this.mapRef.data.setStyle(this.styleFunc)
-  }
-
-  styleFunc = (feature: any) => {
-    console.log(feature.i.id)
-    let newColor = "#FF0000"; //RED
-    if (feature.i.id == 0) newColor = "#00FF00"; //GREEN
-    else newColor = "#0000FF"; //BLUE
-    return ({
-      clickable: false,
-      fillColor: newColor,
-      strokeWeight: 1
-    });
   }
 
   markerGenerator()
